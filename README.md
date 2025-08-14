@@ -12,7 +12,7 @@ Note: Although the templates were developed for Zabbix 7.0, they will work on ea
 
 ## Using template
 
-###Linux
+### Linux
 
 Add /usr/bin/ipmitool to sudoers. For example, /etc/sudoers.d/zabbix file should comtains:
 ```sh
@@ -20,7 +20,7 @@ zabbix ALL=(ALL) NOPASSWD:/usr/sbin/smartctl,/usr/bin/ipmitool
 ```
 Put Temperature_monitoring.conf to /etc/zabbix/zabbix_agent2.d (or /etc/zabbix/zabbix_agent.d) and restart agent.
 
-###Solaris
+### Solaris
 
 For template require to add UserParameter in agent config:
 ```sh
