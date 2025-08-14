@@ -1,0 +1,24 @@
+zabbix_export:
+  version: '7.0'
+  template_groups:
+    - uuid: e960332b3f6c46a1956486d4f3f99fce
+      name: 'Templates/Server hardware'
+  templates:
+    - uuid: b992770dba4b4f9cb6d98a5db9811065
+      template: 'Template get IPMI sensors'
+      name: 'Template get IPMI sensors'
+      description: 'Template for getting sensor values directly from ipmitool. This template is designed specifically to monitor the system-wide temperature sensor, since all other sensors are controlled by other templates.'
+      groups:
+        - name: 'Templates/Server hardware'
+      items:
+        - uuid: 820d8e3d7109408b871e1298d04e1673
+          name: 'IPMI Temp 2'
+          key: ipmi.temperature
+          history: 7d
+          value_type: FLOAT
+          units: °C
+          triggers:
+            - uuid: 68ca8b89a5b64c3ebd633ba4c354887d
+              expression: 'last(/Template get IPMI sensors/ipmi.temperature)>30.000'
+              name: 'Temperature alert'
+              priority: HIGH
